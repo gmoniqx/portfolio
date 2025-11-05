@@ -16,10 +16,11 @@ const Navbar = () => {
   const navItems = [
     { label: "Home", id: "home" },
     { label: "About", id: "about" },
+    { label: "Experience", id: "experience" },
+    { label: "Tech Stack", id: "tech-stack" },
     { label: "Projects", id: "projects" },
-    { label: "Skills", id: "skills" },
-    { label: "Resume", id: "resume" },
-    { label: "Contact", id: "contact" },
+    { label: "Connect", id: "connect" },
+    { label: "Certifications", id: "certifications" },
   ];
 
   return (

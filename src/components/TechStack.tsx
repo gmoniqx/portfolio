@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-const Skills = () => {
+const TechStack = () => {
   const skillCategories = [
     {
       category: "Frontend Development",
@@ -26,12 +26,12 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 sm:py-32">
+    <section id="tech-stack" className="py-20 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Skills & Expertise
+              Tech Stack
             </h2>
             <div className="w-20 h-1 bg-gradient-primary mx-auto mb-6" />
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -72,4 +72,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default TechStack;

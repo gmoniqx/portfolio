@@ -1,41 +1,38 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, ExternalLink } from "lucide-react";
+import { Mail, Linkedin, Github, ExternalLink, Instagram } from "lucide-react";
 
-const Contact = () => {
+const Connect = () => {
   const contactMethods = [
     {
       icon: Mail,
       label: "Email",
-      value: "your.email@example.com",
-      href: "mailto:your.email@example.com",
+      value: "gaylemonique21@gmail.com",
+      href: "mailto:gaylemonique21@gmail.com",
     },
     {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "linkedin.com/in/yourprofile",
-      href: "https://linkedin.com/in/yourprofile",
+      icon: Instagram,
+      label: "Instagram",
+      value: "gaylemonique_",
+      href: "https://instagram.com/gaylemonique_",
     },
     {
       icon: Github,
       label: "GitHub",
-      value: "github.com/yourusername",
-      href: "https://github.com/yourusername",
+      value: "github.com/lelemonik",
+      href: "https://github.com/lelemonik",
     },
   ];
 
   return (
-    <section id="contact" className="py-20 sm:py-32">
+    <section id="connect" className="py-20 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Let's Connect
+              Connect
             </h2>
-            <div className="w-20 h-1 bg-gradient-primary mx-auto mb-6" />
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-            </p>
+            <div className="w-20 h-1 bg-gradient-primary mx-auto mb-6" /> 
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
@@ -68,11 +65,8 @@ const Contact = () => {
           <Card className="bg-gradient-hero text-center p-8 sm:p-12 border-0 animate-fade-in">
             <CardContent className="space-y-4">
               <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
-                Ready to Start a Project?
+                Let's work together!
               </h3>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                Let's work together to create something amazing
-              </p>
               <Button
                 size="lg"
                 variant="secondary"
@@ -92,4 +86,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Connect;

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4">
           <p className="text-muted-foreground flex items-center justify-center gap-2">
-            Made with <Heart className="h-4 w-4 text-accent fill-accent" /> by Your Name
+            Made with <Heart className="h-4 w-4 text-accent fill-accent" /> by Gayle
           </p>
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} All rights reserved.

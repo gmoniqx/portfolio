@@ -1,26 +1,24 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const Projects = () => {
   // Template project structure - easy to replace with real projects
   const projects = [
     {
-      title: "Project Title 1",
-      description: "A brief description of your project. Explain what it does, what technologies you used, and what problems it solves.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
+      title: "Hearts In Motion",
+      description: "A school finals project showcasing love and ethics.",
+      image: "/images/hearts-in-motion.png",
       tags: ["React", "TypeScript", "Tailwind"],
-      demoUrl: "#",
-      githubUrl: "#",
+      demoUrl: "https://heartinmotion.vercel.app/",
     },
     {
-      title: "Project Title 2",
-      description: "Another project description. Highlight your role, the challenges you faced, and the impact of your work.",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=500&fit=crop",
+      title: "By Chi | Affiliator's Showcase",
+      description: "A personal project showcasing a curated selection of products.",
+      image: "/images/bychi.png",
       tags: ["Next.js", "UI/UX", "Design"],
-      demoUrl: "#",
-      githubUrl: "#",
+      demoUrl: "http://bychi.vercel.app",
     },
     {
       title: "Project Title 3",
@@ -28,7 +26,6 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=500&fit=crop",
       tags: ["JavaScript", "API", "CSS"],
       demoUrl: "#",
-      githubUrl: "#",
     },
   ];
 
@@ -64,12 +61,6 @@ const Projects = () => {
                       <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         Demo
-                      </a>
-                    </Button>
-                    <Button size="sm" variant="outline" asChild>
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4 mr-2" />
-                        Code
                       </a>
                     </Button>
                   </div>
