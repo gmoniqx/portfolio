@@ -10,9 +10,6 @@ const Footer = () => {
               "Everything you think is possible, can become something more."
             </p>
           </div>
-          <p className="text-sm sm:text-base text-muted-foreground flex items-center justify-center gap-2">
-            Made with <Heart className="h-4 w-4 text-accent fill-accent" /> by Gayle
-          </p>
           <p className="text-xs sm:text-sm text-muted-foreground">
             © {new Date().getFullYear()} All rights reserved.
           </p>

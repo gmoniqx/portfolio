@@ -10,6 +10,7 @@ const TechStack = () => {
         { name: "JavaScript" },
         { name: "TypeScript" },
         { name: "React" },
+        { name: "Next.js" },
         { name: "Tailwind CSS" },
         { name: "Responsive Design" }
       ],
