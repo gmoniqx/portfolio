@@ -123,14 +123,17 @@ const Index = () => {
                 </div>
               </div>
 
-              <Button
-                variant="ghost"
-                className="w-full mt-5 lg:hidden border border-border"
-                onClick={() => setShowContacts((prev) => !prev)}
-              >
-                Show Contacts
-                <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${showContacts ? "rotate-180" : ""}`} />
-              </Button>
+
+              <div className="flex justify-center lg:hidden mt-5">
+                <Button
+                  variant="ghost"
+                  className="w-full max-w-xs border border-border"
+                  onClick={() => setShowContacts((prev) => !prev)}
+                >
+                  Show Contacts
+                  <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${showContacts ? "rotate-180" : ""}`} />
+                </Button>
+              </div>
 
               <div className={`mt-6 space-y-4 ${showContacts ? "block" : "hidden lg:block"}`}>
                 <Separator />
@@ -204,8 +207,8 @@ const Index = () => {
 
           <Card className="relative bg-card border-border rounded-2xl sm:rounded-[28px] shadow-md overflow-hidden soft-enter-delay soft-hover lg:h-full">
             <CardContent className="p-0 lg:h-full lg:flex lg:flex-col">
-              <div className="flex justify-end border-b border-border/70 bg-background/30">
-                <div className="w-full sm:w-auto p-3 md:p-4 rounded-none sm:rounded-bl-2xl border-b sm:border-l sm:border-b border-border/80 bg-background/70">
+              <div className="flex justify-center sm:justify-end border-b border-border/70 bg-background/30">
+                <div className="w-full sm:w-auto p-3 md:p-4 rounded-none sm:rounded-bl-2xl border-b sm:border-l sm:border-b border-border/80 bg-background/70 flex justify-center">
                   <TubelightNavBar
                     items={tabs.map((tab) => ({ name: tab.label, value: tab.key, icon: tab.icon }))}
                     activeTab={activeTab}
