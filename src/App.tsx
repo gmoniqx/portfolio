@@ -31,11 +31,11 @@ const App = () => {
   useEffect(() => {
     const startExitTimer = window.setTimeout(() => {
       setSplashExiting(true);
-    }, 3000);
+    }, 3900);
 
     const removeSplashTimer = window.setTimeout(() => {
       setShowSplash(false);
-    }, 3500);
+    }, 4400);
 
     return () => {
       window.clearTimeout(startExitTimer);

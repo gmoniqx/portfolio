@@ -116,7 +116,7 @@ const Index = () => {
                   <h1 className="text-2xl sm:text-[26px] leading-8 font-semibold">Gayle Monique</h1>
                   <Badge
                     variant="secondary"
-                    className="mt-2 px-3 py-1 text-[11px] sm:text-xs font-normal bg-background/70 text-foreground/90 border border-border whitespace-nowrap"
+                    className="mt-2 px-3 py-1 text-[11px] sm:text-xs font-normal bg-background/70 text-foreground/90 border border-border text-center whitespace-normal"
                   >
                     Web & UI/UX Developer | BSCS Student
                   </Badge>
@@ -169,7 +169,7 @@ const Index = () => {
                     href="https://instagram.com/gaylemonique_"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors"
+                    className="h-9 w-9 rounded-full border border-border/70 flex items-center justify-center hover:text-primary transition-colors"
                     aria-label="Instagram"
                   >
                     <Instagram className="h-4 w-4" />
@@ -178,7 +178,7 @@ const Index = () => {
                     href="https://github.com/gmoniqx"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors"
+                    className="h-9 w-9 rounded-full border border-border/70 flex items-center justify-center hover:text-primary transition-colors"
                     aria-label="GitHub"
                   >
                     <Github className="h-4 w-4" />
@@ -187,7 +187,7 @@ const Index = () => {
                     href="https://facebook.com/gaylemnq"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors"
+                    className="h-9 w-9 rounded-full border border-border/70 flex items-center justify-center hover:text-primary transition-colors"
                     aria-label="Facebook"
                   >
                     <Facebook className="h-4 w-4" />
@@ -319,10 +319,10 @@ const Index = () => {
                       <div className="h-1 w-12 bg-primary rounded-full mt-4 mb-4" />
                       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
                         {projects.map((project) => (
-                          <div key={project.title} className="overflow-hidden rounded-2xl border border-border bg-background/50">
+                          <div key={project.title} className="overflow-hidden rounded-2xl border border-border bg-background/50 min-w-0">
                             <img src={project.image} alt={project.title} className="w-full aspect-video object-cover" />
                             <div className="p-4 space-y-3">
-                              <h3 className="font-semibold">{project.title}</h3>
+                              <h3 className="font-semibold break-words">{project.title}</h3>
                               <p className="text-sm text-muted-foreground">{project.description}</p>
                               <div className="flex flex-wrap gap-2">
                                 {project.tags.map((tag) => (

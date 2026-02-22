@@ -18,6 +18,40 @@ export function GooeyText({ texts, morphTime = 1, cooldownTime = 0.25, className
   React.useEffect(() => {
     if (!texts.length) return;
 
+    if (texts.length === 1) {
+      const text1 = text1Ref.current;
+      const text2 = text2Ref.current;
+      if (!text1 || !text2) return;
+
+      text1.textContent = texts[0];
+      text2.textContent = texts[0];
+
+      const start = performance.now();
+
+      const animateSingle = (now: number) => {
+        animationFrameRef.current = window.requestAnimationFrame(animateSingle);
+        const t = (now - start) / 1000;
+        const fraction = (Math.sin((Math.PI * 2 * t) / Math.max(morphTime + cooldownTime, 0.5)) + 1) / 2;
+
+        const forward = Math.max(fraction, 0.0001);
+        const reverse = Math.max(1 - fraction, 0.0001);
+
+        text2.style.filter = `blur(${Math.min(8 / forward - 8, 100)}px)`;
+        text2.style.opacity = `${Math.pow(forward, 0.4) * 100}%`;
+
+        text1.style.filter = `blur(${Math.min(8 / reverse - 8, 100)}px)`;
+        text1.style.opacity = `${Math.pow(reverse, 0.4) * 100}%`;
+      };
+
+      animationFrameRef.current = window.requestAnimationFrame(animateSingle);
+
+      return () => {
+        if (animationFrameRef.current !== null) {
+          window.cancelAnimationFrame(animationFrameRef.current);
+        }
+      };
+    }
+
     let textIndex = texts.length - 1;
     let time = new Date();
     let morph = 0;

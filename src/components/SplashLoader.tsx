@@ -13,11 +13,11 @@ export function SplashLoader({ exiting }: SplashLoaderProps) {
       aria-hidden="true"
     >
       <GooeyText
-        texts={["Loading", "Portfolio"]}
-        morphTime={2.1}
-        cooldownTime={0.75}
+        texts={["Loading"]}
+        morphTime={3.1}
+        cooldownTime={1.1}
         className="mx-auto h-16"
-        textClassName="text-4xl md:text-6xl font-semibold tracking-wide text-primary"
+        textClassName="text-3xl md:text-5xl font-medium tracking-normal text-primary/95"
       />
     </div>
   );
