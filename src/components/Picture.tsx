@@ -98,7 +98,7 @@ const Picture = () => {
                           Our Lady of Perpetual Succor College
                         </h3>
                         <p className="text-xs sm:text-sm text-muted-foreground">
-                          Senior High School | Arts and Design - Media and Visual Arts
+                          Senior High School | Arts and Design - Media and Visual Arts 
                         </p>
                         <p className="text-xs text-muted-foreground">
                           2021 - 2023
