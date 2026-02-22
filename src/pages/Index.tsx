@@ -3,11 +3,15 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import {
+  Briefcase,
   ChevronDown,
   Code2,
   Facebook,
   ExternalLink,
+  FileText,
   Github,
   GraduationCap,
   Instagram,
@@ -17,6 +21,7 @@ import {
   Phone,
   Send,
   Pencil,
+  User,
 } from "lucide-react";
 
 type TabKey = "about" | "resume" | "portfolio" | "contact";
@@ -34,12 +39,17 @@ const Index = () => {
       return;
     }
 
+    if (activeTab === "resume") {
+      setShowScrollIndicator(false);
+      return;
+    }
+
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     const hasScrollableContent = container.scrollHeight - container.clientHeight > 8;
     const isNearTop = container.scrollTop < 12;
 
     setShowScrollIndicator(isDesktop && hasScrollableContent && isNearTop);
-  }, []);
+  }, [activeTab]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -83,11 +93,11 @@ const Index = () => {
     },
   ];
 
-  const tabs: { key: TabKey; label: string }[] = [
-    { key: "about", label: "About" },
-    { key: "resume", label: "Resume" },
-    { key: "portfolio", label: "Portfolio" },
-    { key: "contact", label: "Contact" },
+  const tabs: { key: TabKey; label: string; icon: typeof User }[] = [
+    { key: "about", label: "About", icon: User },
+    { key: "resume", label: "Resume", icon: FileText },
+    { key: "portfolio", label: "Portfolio", icon: Briefcase },
+    { key: "contact", label: "Contact", icon: Mail },
   ];
 
   return (
@@ -183,6 +193,11 @@ const Index = () => {
                     <Facebook className="h-4 w-4" />
                   </a>
                 </div>
+
+                <Separator />
+                <div className="flex justify-center">
+                  <ThemeToggle />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -190,22 +205,12 @@ const Index = () => {
           <Card className="relative bg-card border-border rounded-2xl sm:rounded-[28px] shadow-md overflow-hidden soft-enter-delay soft-hover lg:h-full">
             <CardContent className="p-0 lg:h-full lg:flex lg:flex-col">
               <div className="flex justify-end border-b border-border/70 bg-background/30">
-                <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-1 p-3 md:p-4 rounded-none sm:rounded-bl-2xl border-b sm:border-l sm:border-b border-border/80 bg-background/70 w-full sm:w-auto">
-                  {tabs.map((tab) => (
-                    <Button
-                      key={tab.key}
-                      size="sm"
-                      variant="ghost"
-                      className={
-                        activeTab === tab.key
-                          ? "h-10 justify-center text-sm text-primary bg-transparent hover:bg-transparent transition-colors duration-300"
-                          : "h-10 justify-center text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-                      }
-                      onClick={() => setActiveTab(tab.key)}
-                    >
-                      {tab.label}
-                    </Button>
-                  ))}
+                <div className="w-full sm:w-auto p-3 md:p-4 rounded-none sm:rounded-bl-2xl border-b sm:border-l sm:border-b border-border/80 bg-background/70">
+                  <TubelightNavBar
+                    items={tabs.map((tab) => ({ name: tab.label, value: tab.key, icon: tab.icon }))}
+                    activeTab={activeTab}
+                    onTabChange={(tab) => setActiveTab(tab as TabKey)}
+                  />
                 </div>
               </div>
 
@@ -213,7 +218,7 @@ const Index = () => {
                 ref={scrollContainerRef}
                 onScroll={updateScrollIndicator}
                 key={activeTab}
-                className="p-4 sm:p-6 md:p-8 tab-switch-enter lg:flex-1 lg:overflow-y-auto no-scrollbar"
+                className={`p-4 sm:p-6 md:p-8 tab-switch-enter lg:flex-1 ${activeTab === "resume" ? "lg:overflow-hidden" : "lg:overflow-y-auto no-scrollbar"}`}
               >
                 {activeTab === "about" && (
                   <div className="space-y-8">
@@ -222,10 +227,7 @@ const Index = () => {
                       <div className="h-1 w-12 bg-primary rounded-full mt-4 mb-4" />
                       <div className="space-y-3">
                         <p className="text-muted-foreground leading-7">
-                          I am a junior student in the Computer Science department with a strong passion for web development and UI/UX design. I am eager to learn and contribute to innovative projects that enhance user experiences.
-                        </p>
-                        <p className="text-muted-foreground leading-7">
-                          Currently, I am focusing on expanding my knowledge in full-stack development and exploring new technologies to create impactful and unique solutions.
+                          As a junior Computer Science student, I specialize at the intersection of web development and UI/UX design. I am passionate about building intuitive, user-centric applications and am actively expanding my expertise in full-stack development. My goal is to leverage emerging technologies to architect innovative digital solutions that drive meaningful user experiences.
                         </p>
                       </div>
                     </section>
@@ -302,9 +304,9 @@ const Index = () => {
                     </section>
 
                     <section>
-                      <h3 className="text-xl sm:text-2xl font-semibold mb-4">Clients</h3>
+                      <h3 className="text-xl sm:text-2xl font-semibold mb-4">Certifications</h3>
                       <div className="rounded-2xl border border-border bg-background/50 p-5 text-sm text-muted-foreground">
-                        Coming soon
+                        <span>Coming soon</span>
                       </div>
                     </section>
                   </div>
