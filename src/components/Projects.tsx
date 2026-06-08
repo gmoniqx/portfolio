@@ -40,6 +40,20 @@ const Projects = () => {
       tags: ["TypeScript", "React", "Vite", "CSS", "pwa-ready", "AI CHAT INTEGRATION"],
       viewUrl: "https://myzentry.vercel.app/",
     },
+    {
+      title: "Cafino",
+      description: "A live demo of the MyCafino web app.",
+      image: "/images/mycafino.png",
+      tags: ["Next.js", "Tailwind", "Vercel"],
+      viewUrl: "https://mycafino.vercel.app/",
+    },
+    {
+      title: "KapeTayo!",
+      description: "A demo site for KapeTayo (coffee-themed project).",
+      image: "/images/kapetayo.png",
+      tags: ["Next.js", "Tailwind", "Vercel"],
+      viewUrl: "https://kapetayo.vercel.app/",
+    },
   ];
 
   return (

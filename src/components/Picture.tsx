@@ -203,7 +203,7 @@ const Picture = () => {
                   </a>
                   
                   <a
-                    href="https://github.com/gmoniqx"
+                    href="https://github.com/gaylemonique"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -217,7 +217,7 @@ const Picture = () => {
                             GitHub
                           </h3>
                           <p className="text-xs text-muted-foreground truncate">
-                            github.com/gmoniqx
+                            github.com/gaylemonique
                           </p>
                         </div>
                       </CardContent>

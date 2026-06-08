@@ -91,6 +91,20 @@ const Index = () => {
       tags: ["React", "TypeScript", "PWA"],
       url: "https://myzentry.vercel.app/",
     },
+    {
+      title: "Cafino",
+      description: "A coffee journal to track every cup, monitor caffeine, and keep your routine in one place.",
+      image: "/images/mycafino.png",
+      tags: ["Next.js", "Tailwind", "Vercel"],
+      url: "https://mycafino.vercel.app/",
+    },
+    {
+      title: "KapeTayo!",
+      description: "A coffee discovery app to save bookmarks, track visits, and share favorite cafes in Marikina City.",
+      image: "/images/kapetayo.png",
+      tags: ["React", "Tailwind", "Vercel"],
+      url: "https://kapetayo.vercel.app/",
+    },
   ];
 
   const tabs: { key: TabKey; label: string; icon: typeof User }[] = [
@@ -178,7 +192,7 @@ const Index = () => {
                     <Instagram className="h-4 w-4" />
                   </a>
                   <a
-                    href="https://github.com/gmoniqx"
+                    href="https://github.com/gaylemonique"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-9 w-9 rounded-full border border-border/70 flex items-center justify-center hover:text-primary transition-colors"
@@ -376,7 +390,7 @@ const Index = () => {
                           className="space-y-4"
                           onSubmit={(event) => {
                             event.preventDefault();
-                            window.location.href = "https://gayle.zentariph.com";
+                            window.location.href = "https://gayle@zentariph.com";
                           }}
                         >
                           <div className="grid sm:grid-cols-2 gap-4">
@@ -391,7 +405,7 @@ const Index = () => {
                               className="h-12 rounded-2xl border border-border bg-background/50 px-4 text-base sm:text-sm outline-none focus:border-primary transition-colors"
                             />
                           </div>
-
+                          
                           <textarea
                             placeholder="Your Message"
                             rows={5}
