@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { type FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
+import { toast } from "@/hooks/use-toast";
 import {
   Briefcase,
   ChevronDown,
@@ -26,10 +27,24 @@ import {
 
 type TabKey = "about" | "resume" | "portfolio" | "contact";
 
+type ContactFormState = {
+  fullName: string;
+  email: string;
+  message: string;
+};
+
+const initialContactForm: ContactFormState = {
+  fullName: "",
+  email: "",
+  message: "",
+};
+
 const Index = () => {
   const [activeTab, setActiveTab] = useState<TabKey>("about");
   const [showContacts, setShowContacts] = useState(false);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const [contactForm, setContactForm] = useState<ContactFormState>(initialContactForm);
+  const [isSendingMessage, setIsSendingMessage] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const updateScrollIndicator = useCallback(() => {
@@ -68,6 +83,64 @@ const Index = () => {
       window.removeEventListener("resize", updateScrollIndicator);
     };
   }, [activeTab, updateScrollIndicator]);
+
+  const updateContactField = (field: keyof ContactFormState, value: string) => {
+    setContactForm((currentForm) => ({
+      ...currentForm,
+      [field]: value,
+    }));
+  };
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const payload = {
+      name: contactForm.fullName.trim(),
+      email: contactForm.email.trim(),
+      message: contactForm.message.trim(),
+    };
+
+    if (!payload.name || !payload.email || !payload.message) {
+      toast({
+        title: "Please complete the form",
+        description: "Your name, email address, and message are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      setIsSendingMessage(true);
+
+      const response = await fetch("/api/send-contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(result?.error ?? "Please try again in a moment.");
+      }
+
+      setContactForm(initialContactForm);
+      toast({
+        title: "Message sent",
+        description: "Thanks for reaching out. Your message was sent to Gayle.",
+      });
+    } catch (error) {
+      toast({
+        title: "Message was not sent",
+        description: error instanceof Error ? error.message : "Please try again in a moment.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSendingMessage(false);
+    }
+  };
 
   const projects = [
     {
@@ -386,29 +459,38 @@ const Index = () => {
                           <h3 className="text-xl sm:text-2xl font-semibold">Contact Form</h3>
                         </div>
 
-                        <form
-                          className="space-y-4"
-                          onSubmit={(event) => {
-                            event.preventDefault();
-                            window.location.href = "https://gayle@zentariph.com";
-                          }}
-                        >
+                        <form className="space-y-4" onSubmit={handleContactSubmit}>
                           <div className="grid sm:grid-cols-2 gap-4">
                             <input
                               type="text"
+                              name="fullName"
                               placeholder="Full name"
+                              value={contactForm.fullName}
+                              onChange={(event) => updateContactField("fullName", event.target.value)}
+                              required
+                              maxLength={120}
                               className="h-12 rounded-2xl border border-border bg-background/50 px-4 text-base sm:text-sm outline-none focus:border-primary transition-colors"
                             />
                             <input
                               type="email"
+                              name="email"
                               placeholder="Email address"
+                              value={contactForm.email}
+                              onChange={(event) => updateContactField("email", event.target.value)}
+                              required
+                              maxLength={254}
                               className="h-12 rounded-2xl border border-border bg-background/50 px-4 text-base sm:text-sm outline-none focus:border-primary transition-colors"
                             />
                           </div>
                           
                           <textarea
+                            name="message"
                             placeholder="Your Message"
                             rows={5}
+                            value={contactForm.message}
+                            onChange={(event) => updateContactField("message", event.target.value)}
+                            required
+                            maxLength={4000}
                             className="w-full rounded-2xl border border-border bg-background/50 px-4 py-3 text-base sm:text-sm outline-none focus:border-primary transition-colors resize-none"
                           />
 
@@ -416,10 +498,11 @@ const Index = () => {
                             <Button
                               type="submit"
                               variant="secondary"
+                              disabled={isSendingMessage}
                               className="w-full sm:w-auto rounded-2xl border border-border bg-background/60 text-primary hover:bg-background/80"
                             >
                               <Send className="h-4 w-4 mr-2" />
-                              Send Message
+                              {isSendingMessage ? "Sending..." : "Send Message"}
                             </Button>
                           </div>
                         </form>
