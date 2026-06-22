@@ -244,7 +244,7 @@ const Index = () => {
                       <div className="h-1 w-12 bg-primary rounded-full mt-4 mb-4" />
                       <div className="space-y-3">
                         <p className="text-muted-foreground leading-7">
-                          As a junior Computer Science student, I specialize at the intersection of web development and UI/UX design. I am passionate about building intuitive, user-centric applications and am actively expanding my expertise in full-stack development. My goal is to leverage emerging technologies to architect innovative digital solutions that drive meaningful user experiences.
+                          As a Computer Science student, I specialize at the intersection of web development and UI/UX design. I am passionate about building intuitive, user-centric applications and am actively expanding my expertise in full-stack development. My goal is to leverage emerging technologies to architect innovative digital solutions that drive meaningful user experiences.
                         </p>
                       </div>
                     </section>
